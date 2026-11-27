@@ -10,13 +10,14 @@
 }
 * { margin: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(189px * var(--z, 1)); }
-body { background: #fff; overflow-x: hidden; }
+html { overflow-x: hidden; }
+body { background: #fff; overflow-x: clip; }  /* clip: the mirrored sides can't be scrolled to */
 
 .stage {
   position: relative;
   width: 1920px;
   height: 10312px;
-  overflow: hidden;
+  margin: 0 auto;   /* centred; backgrounds spill into the side space, body hides the rest */
   zoom: var(--z, 1);
   font-family: var(--font-body);
 }
@@ -27,6 +28,8 @@ img.a { max-width: none; object-fit: cover; }
 .crop { position: absolute; overflow: hidden; }
 .crop img { position: absolute; max-width: none; }
 .flip { transform: scaleY(-1); }
+/* full-width background: reaches past both sides of the artboard; the art starts at x = 0 */
+.bg { position: absolute; left: -1920px; width: 5760px; background-repeat: repeat; background-position-x: 1920px; }
 .ins { position: absolute; }
 .arch { width: 290.867px; height: 400.801px; border-radius: 168.047px 168.047px 19.848px 19.848px; }
 .ins img { display: block; width: 100%; height: 100%; }
@@ -42,7 +45,7 @@ img.a { max-width: none; object-fit: cover; }
 .nunito { font-family: "Nunito", sans-serif; font-weight: 700; color: var(--ink); }
 
 /* line boil (header art only, nav stays still). Slight upscale hides displaced edges. */
-.boil { position: absolute; left: 0; top: 0; width: 1920px; height: 1079px; overflow: hidden; }
+.boil { position: absolute; left: 0; top: 0; width: 1920px; height: 1079px; clip-path: inset(0 -50%); } /* trims top/bottom only */
 .art { position: absolute; inset: 0; filter: url(#boil); transform: scale(1.008); }
 
 .art.girl { filter: url(#boil-girl); }
@@ -79,6 +82,15 @@ img.a { max-width: none; object-fit: cover; }
 @keyframes twinkle { from { opacity: .35; scale: .75; } to { opacity: 1; scale: 1.1; } }
 @media (prefers-reduced-motion: reduce) { .frame-crayon { filter: url(#crayon); } .frame-night, .doodle { filter: none; } .twinkle { animation: none; } }
 
+/* game concept: 28px = body text size */
+.concept { left: 400px; top: 3170px; width: 1120px; padding: 8px 28px 12px; text-align: center; font-size: 28px; line-height: 1.3; background: rgba(255, 244, 225, .93); border-radius: 22px; }
+.concept h3 { font-size: 36px; line-height: 1.2; }
+.concept p + p { margin-top: 6px; }
+
+/* EyeCon description: 29px = body size, 40px = name size */
+.ec-desc { left: 380px; top: 7926px; width: 1160px; text-align: center; font-size: 28px; line-height: 36px; }
+.ec-desc strong { font-size: 36px; line-height: 0; }
+
 /* sway: skew leaves everything at y=150 fixed, so string tops stay put. deg = swing size */
 .sway { position: absolute; inset: 0; transform-origin: 0 150px; animation: sway 3s ease-in-out infinite alternate; will-change: transform; }
 @keyframes sway { from { transform: skewX(-1.2deg); } to { transform: skewX(1.2deg); } }
@@ -110,10 +122,10 @@ img.a { max-width: none; object-fit: cover; }
 }
 
 /* fixed top curtain + nav */
-.topbar { position: fixed; z-index: 10; left: 0; top: 0; width: 1920px; height: 189px; zoom: var(--z, 1); }
+.topbar { position: fixed; z-index: 10; left: calc(var(--side, 0) * 1px); top: 0; width: 1920px; height: 189px; zoom: var(--z, 1); }
 .topbar .art { inset: -6px -8px auto; height: 249px; transform: none; pointer-events: none; }
 /* top-right, equal gap between words. right = distance from the edge, gap = space between words, top = height */
-.nav { position: absolute; top: 28px; right: 72px; display: flex; gap: 64px; filter: url(#boil-nav); }
+.nav { position: absolute; top: 28px; right: calc(72px - var(--side, 0) * 1px); display: flex; gap: 64px; filter: url(#boil-nav); }
 @media (prefers-reduced-motion: reduce) { .nav { filter: none; } }
 .nav a { font-size: 32px; line-height: 44px; color: #fff; text-decoration: none; white-space: nowrap; }
 .nav a:hover, .nav a:focus-visible { text-decoration: underline; }
@@ -127,9 +139,18 @@ img.a { max-width: none; object-fit: cover; }
 .chat-in { position: relative; width: 1677px; height: 551px; zoom: max(.2, var(--z, 1) * .52); }
 .chat.show { opacity: 1; visibility: visible; transition-delay: 0s; }
 
-/* girl pops up first, then the chat box grows out of its tail. .5s = gap between them */
+/* girl pops up on her own; clicking her grows the chat box out of its tail */
 .chat.show .chat-mascot { animation: pop-girl .65s both; }
-.chat.show .chat-art { animation: pop-bubble .45s .5s both; }
+.chat-art { visibility: hidden; opacity: 0; transition: opacity .2s, visibility 0s .2s; }
+.chat.open .chat-art { visibility: visible; opacity: 1; transition-delay: 0s; animation: pop-bubble .45s both; }
+
+/* hover / keyboard focus: she grows, wiggles and glows so it's clear she can be clicked. 1.18 = hover size */
+button.chat-mascot { border: 0; padding: 0; background: none; cursor: pointer; border-radius: 50%; }
+.chat.show button.chat-mascot { pointer-events: auto; }
+.chat-mascot img { display: block; transform-origin: 50% 90%; transition: scale .2s, filter .2s; }
+.chat-mascot:hover img, .chat-mascot:focus-visible img { scale: 1.18; filter: drop-shadow(0 0 14px #fff) drop-shadow(0 0 30px #ffc544); animation: wiggle .6s ease-in-out infinite; }
+.chat-mascot:focus-visible { outline: 8px dashed var(--blue); }
+@keyframes wiggle { 0%, 100% { rotate: 0deg; } 25% { rotate: -8deg; } 75% { rotate: 8deg; } }
 @keyframes pop-girl {
   0%   { transform: translateY(380px) scale(.4); }
   55%  { transform: translateY(-45px) scale(.95, 1.14); }
@@ -147,7 +168,7 @@ img.a { max-width: none; object-fit: cover; }
 .chat-art a { pointer-events: auto; }
 .chat-mascot { left: 1321px; top: 195px; width: 356px; height: 356px; transform-origin: 50% 100%; filter: url(#boil-chat); }
 .chat-mascot img { width: 100%; height: 100%; object-fit: cover; }
-@media (prefers-reduced-motion: reduce) { .chat { transition: none; } .chat.show .chat-art, .chat.show .chat-mascot { animation: none; } .chat-art > .crop, .chat-mascot { filter: none; } }
+@media (prefers-reduced-motion: reduce) { .chat, .chat-art, .chat-mascot img { transition: none; } .chat.open .chat-art, .chat.show .chat-mascot, .chat-mascot:hover img, .chat-mascot:focus-visible img { animation: none; } .chat-art > .crop, .chat-mascot { filter: none; } }
 @media print { .chat { display: none; } }
 
 /* scroll reveal: translate (not transform) so rotated/flipped pieces keep their pose. 60px = rise, .8s = speed */
@@ -155,6 +176,25 @@ img.a { max-width: none; object-fit: cover; }
 .reveal.in { opacity: 1; translate: none; }
 .twinkle.reveal:not(.in) { animation: none; }
 @media print { .reveal { opacity: 1; translate: none; } }
+
+/* frame borders drawn over artwork must not swallow its clicks */
+.a.arch, .sb-frame { pointer-events: none; }
+
+/* clickable artwork: grows and glows on hover. 1.07 = hover size */
+.zoomable { cursor: zoom-in; transition: scale .2s, filter .2s; }
+.zoomable.reveal { transition: opacity .8s ease var(--delay), translate .8s cubic-bezier(.2, .8, .3, 1.2) var(--delay), scale .2s, filter .2s; }
+.zoomable:hover, .zoomable:focus-visible { scale: 1.07; z-index: 5; }
+.zoomable:hover:not(.boil-title, .boil-balloon), .zoomable:focus-visible:not(.boil-title, .boil-balloon) { filter: drop-shadow(0 0 12px #ffc544); }
+.zoomable:focus-visible { outline: 5px dashed var(--blue); }
+
+.lightbox { border: 0; padding: 0; margin: 0; width: 100vw; height: 100vh; max-width: none; max-height: none; background: none; overflow: hidden; cursor: zoom-out; }
+.lightbox[open] { display: grid; place-items: center; }
+.lightbox::backdrop { background: rgba(45, 14, 8, .86); }
+.lightbox-view { background: #fff4e1; padding: 12px; border: 5px solid #592204; border-radius: 20px; }
+.lightbox[open] .lightbox-view { animation: pop-bubble .35s both; }
+.lightbox-close { position: absolute; top: 16px; right: 20px; width: 48px; height: 48px; border: 3px solid #592204; border-radius: 50%; background: #fff4e1; color: #592204; font: 32px/1 var(--font-body); cursor: pointer; }
+html:has(.lightbox[open]) { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .zoomable { transition: none; } .lightbox[open] .lightbox-view { animation: none; } }
 
 .blue { color: var(--blue); }
 

@@ -10,8 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Alice&family=Chewy&family=Itim&family=Aoboshi+One&family=Baloo+2:wght@700&family=Nunito:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
-  // scale the 1920px artboard to the viewport width
-  const fit = () => document.documentElement.style.setProperty('--z', document.documentElement.clientWidth / 1920);
+  // ZOOM: 1 = artboard fills the screen width, lower = zoomed out. Phones stay at full width.
+  const ZOOM = .8;
+  const pageZoom = () => { const w = document.documentElement.clientWidth; return w / 1920 * (w > 900 ? ZOOM : 1); };
+  const fit = () => {
+    const root = document.documentElement, z = pageZoom();
+    root.style.setProperty('--z', z);
+    root.style.setProperty('--side', (root.clientWidth / z - 1920) / 2);  // space each side, in design pixels
+  };
   fit(); addEventListener('resize', fit);
 </script>
 </head>
@@ -19,7 +25,7 @@
 <!-- stays on screen while scrolling -->
 <div class="topbar">
   <div class="art">
-    <div class="crop" style="left:0;top:0;width:1936px;height:249px"><img src="assets/fcurtain.png" alt="" style="left:0;top:0;width:100%;height:433.32%"></div>
+    <img class="a" src="assets/fcurtain-wide.png" alt="" style="left:-1936px;top:0;width:5808px;height:249px;max-width:none;object-fit:fill">
   </div>
   <nav class="nav heading">
     <a href="#about">About me</a>
@@ -28,10 +34,10 @@
   </nav>
 </div>
 
-<!-- floating contact card (Figma "Group 5"): pops up bottom-right once you scroll past the header -->
+<!-- floating contact card (Figma "Group 5"): the girl pops up bottom-right after the About section; click her to open the contact box -->
 <aside class="chat" aria-label="Contact Nadine">
   <div class="chat-in">
-  <div class="chat-art">
+  <div class="chat-art" id="chat-box">
     <div class="crop" style="left:0;top:0;width:1473px;height:426px;transform:scaleX(-1)"><img src="assets/chat-bubble.png" alt="" style="left:-30.35%;top:0;width:130.35%;height:253.52%"></div>
     <div class="a boil-text contact-card">
       <p class="heading blue">Contact :</p>
@@ -41,22 +47,14 @@
       </div>
     </div>
   </div>
-  <div class="chat-mascot"><img src="assets/chat-mascot.png" alt=""></div>
+  <button type="button" class="chat-mascot" aria-label="Show contact details" aria-expanded="false" aria-controls="chat-box" title="Contact me!"><img src="assets/chat-mascot.png" alt=""></button>
   </div>
 </aside>
 
 <main class="stage">
 
   <!-- background stripes (flipped tiles) -->
-  <div class="crop flip" style="left:-1px;top:2104px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:3018px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:3932px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:4846px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:5741px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:6655px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:7569px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:8464px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
-  <div class="crop flip" style="left:-1px;top:9378px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="bg" style="top:2104px;height:8208px;background-image:url(assets/stripes-tile.webp);background-size:3840px 1800px"></div>
 
   <!-- ============ MOVING POSTER ============ -->
   <section aria-label="Moving Poster">
@@ -69,8 +67,7 @@
     <img class="mp-card" src="assets/mp-sketch.png" alt="Poster sketch" style="left:543px;top:7091px">
     <img class="mp-card" src="assets/mp-base.png" alt="Poster base colours" style="left:753.5px;top:7091px">
     <img class="mp-card" src="assets/mp-details.png" alt="Poster with details" style="left:963.5px;top:7091.31px;width:202.891px;height:360.694px">
-    <!-- moving poster slot: drop a <video> in here -->
-    <div class="mp-card" style="left:1173.97px;top:7091.06px;background:#bdbdbd"></div>
+    <video class="mp-card" src="POSTERMOVINGr.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Moving poster animation" style="left:1173.97px;top:7091.06px"></video>
   </section>
 
   <!-- ============ SNIPFIT ============ -->
@@ -91,7 +88,7 @@
     <p class="a nowrap" style="left:711.49px;top:6230.84px;font-size:23.37px">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
     <p class="a" style="left:749.1px;top:6263.34px;font-size:23.37px;color:#fffae5;white-space:pre">a b c d e f g h i j k l m n o p q r s t u v w x  y z</p>
     <p class="a nowrap" style="left:896.17px;top:6365px;font-size:34.249px">App Logo</p>
-    <div class="crop" style="left:687.03px;top:5833.92px;width:110.559px;height:118.763px"><img src="assets/snipfit.png" alt="" style="left:-703.11%;top:0;width:1042.4%;height:317.11%"></div>
+    <div class="crop" data-backing="#ff885b" style="left:687.03px;top:5833.92px;width:110.559px;height:118.763px"><img src="assets/snipfit.png" alt="" style="left:-703.11%;top:0;width:1042.4%;height:317.11%"></div>
     <div class="crop" style="left:919.26px;top:5844.14px;width:112.691px;height:118.823px"><img src="assets/snipfit.png" alt="" style="left:-834.12%;top:-.04%;width:1042.4%;height:323.24%"></div>
     <div class="crop" style="left:1155.15px;top:5833.92px;width:108.394px;height:118.736px"><img src="assets/snipfit.png" alt="" style="left:-954.81%;top:.13%;width:1042.4%;height:310.97%"></div>
     <div class="crop" style="left:820.67px;top:6411.84px;width:311.109px;height:262.909px"><img src="assets/snipfit.png" alt="SnipFit app icon" style="left:-361.52%;top:0;width:857.46%;height:331.57%"></div>
@@ -117,10 +114,9 @@
     <img class="a boil-title" src="assets/dc-title.png" alt="Drawing Closer" style="left:533px;top:2166px;width:487.435px;height:274.182px">
     <h3 class="a heading blue nowrap" style="left:1037.14px;top:2354.17px;font-size:33.943px">Character Turn Around</h3>
     <h3 class="a heading blue nowrap" style="left:899.25px;top:2646.93px;font-size:33.943px">Assets</h3>
-    <p class="a blue" style="left:555.6px;top:3224.15px;width:765.782px;font-size:15.089px">GAME CONCEPT</p>
-    <div class="a blue" style="left:555.6px;top:3255.27px;width:805.392px;font-size:15.089px">
+    <div class="a blue concept">
+      <h3 class="heading">GAME CONCEPT</h3>
       <p>"Drawing Closer" is a level-based puzzle game that explores themes of childhood nostalgia through beloved art mediums we grew up with.</p>
-      <p>&nbsp;</p>
       <p>Each level reveals heartfelt storylines that invite you to connect with the main character's journey.</p>
     </div>
     <h3 class="a heading blue nowrap" style="left:912.7px;top:3392.72px;font-size:27.693px">Trailer</h3>
@@ -138,7 +134,7 @@
   <!-- ============ INFO / ABOUT ============ -->
   <section aria-label="About me">
     <span id="about" class="a" style="top:1190px"></span>
-    <div class="crop flip" style="left:-1px;top:1079px;width:1920px;height:1025px"><img src="assets/stripes.png" alt="" style="width:100%;height:105.37%"></div>
+    <div class="bg flip" style="top:1079px;height:1026px;background-image:url(assets/stripes-pair.webp);background-size:3840px 1080px"></div>
     <div class="a boil-portrait" style="left:790px;top:1371px;width:338.391px;height:441.454px">
       <div class="a" style="left:0;top:0;width:338.391px;height:441.454px;background:#6f300e;border:3.848px solid #592204;border-radius:195.503px 195.503px 19.848px 19.848px;box-shadow:-6.616px 6.616px 2.646px rgba(63,10,10,.42)"></div>
       <div class="crop arch" style="left:24.05px;top:24.62px">
@@ -196,7 +192,7 @@
     <img class="sb" src="assets/sb-0083.png" alt="Storyboard frame 8" style="left:893.83px;top:4406.53px">
     <img class="sb" src="assets/sb-0089.png" alt="Storyboard frame 9" style="left:1026.47px;top:4406.53px">
     <img class="sb" src="assets/sb-0100.png" alt="Storyboard frame 10" style="left:1159.1px;top:4406.53px;border-bottom-right-radius:4.449px">
-    <div class="a" style="left:621px;top:4269px;width:677.631px;height:275.413px;border:8.899px solid #b9e5ed;border-radius:18.687px"></div>
+    <div class="a sb-frame" style="left:621px;top:4269px;width:677.631px;height:275.413px;border:8.899px solid #b9e5ed;border-radius:18.687px"></div>
 
     <div class="crop" style="left:739px;top:4675px;width:261.882px;height:284.065px"><img src="assets/vidpro.png" alt="Character design sketches" style="left:0;top:-17.14%;width:235.29%;height:117.14%"></div>
     <div class="crop" style="left:1036.21px;top:4675px;width:144.158px;height:292.765px"><img src="assets/vidpro-char.png" alt="Final character design" style="left:0;top:-25.4%;width:100%;height:125.42%"></div>
@@ -217,7 +213,7 @@
     <!-- line boil: noise displacement, re-seeded a few times a second.
          Separate filters so layers wobble independently. scale = strength, data-ms = speed, baseFrequency = wiggle size -->
     <svg width="0" height="0" class="a" aria-hidden="true">
-      <filter id="boil" data-ms="160" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <filter id="boil" data-ms="160" x="-30%" y="0" width="160%" height="100%" color-interpolation-filters="sRGB">
         <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="1" seed="1" result="noise"/>
         <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
@@ -268,7 +264,7 @@
     </svg>
     <div class="boil">
       <div class="art">
-          <img class="a" src="assets/bga1.png" alt="" style="left:.51px;top:0;width:1918.146px;height:1078.957px">
+          <div class="bg" style="top:0;height:1079px;background-image:url(assets/bga-pair.webp);background-size:3840px 1079px"></div>
       </div>
       <!-- girl: ducks behind the right curtain and peeks back in -->
       <div class="peek">
@@ -277,7 +273,7 @@
         </div>
       </div>
       <div class="art">
-          <img class="a" src="assets/curtain.png" alt="" style="left:1.56px;top:0;width:1917.619px;height:1078.661px">
+          <div class="bg" style="top:0;height:1079px;background-image:url(assets/curtain-pair.webp);background-size:3840px 1079px"></div>
       </div>
       <!-- hanging sign: swings below the point where the strings leave the top curtain -->
       <div class="drop">
@@ -301,7 +297,6 @@
     <div class="a" style="left:1504.59px;top:7622px;width:233.408px;height:233.408px"><span class="ins" style="inset:0 -1.71% -3.43% -1.71%"><img src="assets/ec-e20.svg" alt=""></span></div>
     <div class="a" style="left:1401px;top:7633.43px;width:160.762px;height:160.762px"><span class="ins" style="inset:0 -2.49% -4.98% -2.49%"><img src="assets/ec-e21.svg" alt=""></span></div>
     <div class="a" style="left:1621.63px;top:7875.59px;width:46.413px;height:46.413px"><span class="ins" style="inset:0 -8.62% -17.24% -8.62%"><img src="assets/ec-e23.svg" alt=""></span></div>
-    <img class="a" src="assets/ec-e22.svg" alt="" style="left:1908px;top:7849px;width:145px;height:145px">
     <div class="crop" style="left:752.83px;top:7791px;width:453.951px;height:142.91px"><img src="assets/eyecon-logo.png" alt="EyeCon" style="left:0;top:-120.29%;width:100%;height:317.65%"></div>
     <img class="a" src="assets/ec-e16.svg" alt="" style="left:134.29px;top:7519.93px;width:640.621px;height:640.621px;transform:rotate(-.21deg)">
     <div class="a" style="left:348.23px;top:7644.93px;width:169.942px;height:169.942px"><span class="ins" style="inset:0 -2.35% -4.71% -2.35%"><img src="assets/ec-e24.svg" alt=""></span></div>
@@ -309,8 +304,8 @@
     <div class="a" style="left:459.86px;top:7703.23px;width:123.724px;height:123.724px"><span class="ins" style="inset:0 -3.23% -6.47% -3.23%"><img src="assets/ec-e25.svg" alt=""></span></div>
     <div class="a" style="left:345px;top:7815px;width:80.349px;height:80.349px"><span class="ins" style="inset:0 -4.98% -9.96% -4.98%"><img src="assets/ec-e26.svg" alt=""></span></div>
 
-    <p class="a nunito ctr" style="left:979.48px;top:7963.42px;width:686.392px;line-height:27.668px"><span style="font-size:29.513px"> EyeCon</span><span style="font-size:18.445px"> is an interactive 2D web-based simulation game for enhancing visual interface standards and accessibility literacy. </span></p>
-    <h3 class="a nunito ctr" style="left:960.2px;top:8040px;width:686.392px;font-size:29.513px;line-height:27.668px">Game Ui</h3>
+    <p class="a nunito ec-desc"><strong>EyeCon</strong> is an interactive 2D web-based simulation game for enhancing visual interface standards and accessibility literacy.</p>
+    <h3 class="a nunito ctr" style="left:960.2px;top:8050px;width:686.392px;font-size:29.513px;line-height:27.668px">Game Ui</h3>
     <h3 class="a nunito ctr" style="left:960.2px;top:8935px;width:686.392px;font-size:29.513px;line-height:27.668px">Sample Levels</h3>
     <h3 class="a nunito ctr" style="left:960.2px;top:9849px;width:686.392px;font-size:29.513px;line-height:27.668px">Thesis Proponents :</h3>
 
@@ -338,11 +333,17 @@
 
   <!-- ============ FOOTER ============ -->
   <footer>
-    <div class="crop" style="left:0;top:10122px;width:1920px;height:190px"><img src="assets/stripes.png" alt="" style="left:0;top:-468.42%;width:100%;height:568.42%"></div>
+    <div class="bg" style="top:10122px;height:190px;background-image:url(assets/stripes-pair.webp);background-size:3840px 1080px;background-position-y:-890px"></div>
     <p class="a blue" style="left:0;width:1920px;text-align:center;top:10232px;font-size:28.057px">© 2026 All rights are reserved.</p>
   </footer>
 
 </main>
+
+<!-- enlarged view for artwork; click anywhere or press Esc to close -->
+<dialog class="lightbox" aria-label="Enlarged image">
+  <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-view"></div>
+</dialog>
 <script>
   // ponytail: SVG filter on a full-width layer is CPU-heavy; swap for 3 pre-rendered frames if it stutters
   const still = matchMedia('(prefers-reduced-motion: reduce)');
@@ -373,7 +374,7 @@
     const drop = document.querySelector('.drop');
     drop.classList.add('up');
     const check = () => {
-      const z = document.documentElement.clientWidth / 1920;
+      const z = pageZoom();
       if (scrollY > 800 * z) { drop.classList.remove('fall'); drop.classList.add('up'); }  // off screen: reset
       else if (scrollY < 80 * z && drop.classList.contains('up')) drop.classList.replace('up', 'fall');
     };
@@ -383,8 +384,50 @@
 
   // contact card: visible only after the header has scrolled away
   const chat = document.querySelector('.chat');
-  const showChat = () => chat.classList.toggle('show', scrollY > 800 * document.documentElement.clientWidth / 1920);
+  const girl = chat.querySelector('.chat-mascot');
+  const openChat = open => { chat.classList.toggle('open', open); girl.setAttribute('aria-expanded', open); };
+  girl.addEventListener('click', () => openChat(!chat.classList.contains('open')));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && chat.classList.contains('open')) { openChat(false); girl.focus(); } });
+  addEventListener('click', e => { if (!chat.contains(e.target)) openChat(false); });  // click elsewhere closes it
+  const showChat = () => {
+    const visible = scrollY > 1860 * pageZoom();  // 1860 = past the About section
+    chat.classList.toggle('show', visible);
+    if (!visible) openChat(false);
+  };
   showChat(); addEventListener('scroll', showChat, { passive: true });
+
+  if (still.matches) document.querySelectorAll('video[autoplay]').forEach(v => { v.autoplay = false; v.pause(); v.controls = true; });
+
+  // click artwork to enlarge it. decor = files that are backgrounds or ornaments, so they stay unclickable
+  const decor = /(stripes|paper\.|navy|clouds|ec-e\d|sf-e|shield|eye\.png|mail|phone|arch-pattern|note|bubble)/;
+  const art = new Set([...document.querySelectorAll('.stage section img')]
+    .filter(img => !decor.test(img.getAttribute('src')))
+    .map(img => img.closest('.crop') || img));  // cropped sprites enlarge as the visible crop, not the whole file
+  document.querySelectorAll('video.mp-card').forEach(v => art.add(v));
+  const lightbox = document.querySelector('.lightbox'), view = lightbox.querySelector('.lightbox-view');
+  const enlarge = el => {
+    const w = el.offsetWidth, h = el.offsetHeight, copy = el.cloneNode(true);
+    copy.classList.remove('zoomable', 'reveal', 'in');
+    ['tabindex', 'role', 'aria-label'].forEach(name => copy.removeAttribute(name));
+    Object.assign(copy.style, { position: 'relative', left: '0', top: '0', margin: '0', width: w + 'px', height: h + 'px',
+      transform: 'none', filter: 'none', boxShadow: 'none', animation: 'none',
+      zoom: Math.min(innerWidth * .9 / w, innerHeight * .86 / h) });
+    view.style.background = el.dataset.backing || '';
+    view.replaceChildren(copy);
+    lightbox.showModal();
+    if (copy.tagName === 'VIDEO') { copy.muted = true; copy.play(); }
+  };
+  art.forEach(el => {
+    const name = el.getAttribute('aria-label') || [el, ...el.querySelectorAll('img')].map(i => i.getAttribute('alt')).find(Boolean) || 'artwork';
+    el.classList.add('zoomable');
+    el.tabIndex = 0;
+    el.setAttribute('role', 'button');
+    el.setAttribute('aria-label', 'Enlarge ' + name);
+    el.addEventListener('click', () => enlarge(el));
+    el.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enlarge(el); } });
+  });
+  lightbox.addEventListener('click', e => { e.stopPropagation(); lightbox.close(); });
+  lightbox.addEventListener('close', () => view.replaceChildren());
 </script>
 </body>
 </html>
