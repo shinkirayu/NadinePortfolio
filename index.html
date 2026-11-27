@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nadine R. Santillan — Portfolio 2026</title>
+<meta name="description" content="Portfolio of Nadine R. Santillan: illustration, UI, graphic and motion design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alice&family=Chewy&family=Itim&family=Aoboshi+One&family=Baloo+2:wght@700&family=Nunito:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>
+  // scale the 1920px artboard to the viewport width
+  const fit = () => document.documentElement.style.setProperty('--z', document.documentElement.clientWidth / 1920);
+  fit(); addEventListener('resize', fit);
+</script>
+</head>
+<body>
+<!-- stays on screen while scrolling -->
+<div class="topbar">
+  <div class="art">
+    <div class="crop" style="left:0;top:0;width:1936px;height:249px"><img src="assets/fcurtain.png" alt="" style="left:0;top:0;width:100%;height:433.32%"></div>
+  </div>
+  <nav class="nav heading">
+    <a href="#about">About me</a>
+    <a href="#work">Resume</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div>
+
+<!-- floating contact card (Figma "Group 5"): pops up bottom-right once you scroll past the header -->
+<aside class="chat" aria-label="Contact Nadine">
+  <div class="chat-in">
+  <div class="chat-art">
+    <div class="crop" style="left:0;top:0;width:1473px;height:426px;transform:scaleX(-1)"><img src="assets/chat-bubble.png" alt="" style="left:-30.35%;top:0;width:130.35%;height:253.52%"></div>
+    <div class="a boil-text contact-card">
+      <p class="heading blue">Contact :</p>
+      <div class="contact-row">
+        <a class="contact-line" href="mailto:santillan.nadine07@gmail.com"><img class="ico-mail" src="assets/mail.svg" alt="">santillan.nadine07@gmail.com</a>
+        <a class="contact-line" href="tel:+639213952256"><img class="ico-phone" src="assets/phone.svg" alt="">(+63) 921 - 395 - 2256</a>
+      </div>
+    </div>
+  </div>
+  <div class="chat-mascot"><img src="assets/chat-mascot.png" alt=""></div>
+  </div>
+</aside>
+
+<main class="stage">
+
+  <!-- background stripes (flipped tiles) -->
+  <div class="crop flip" style="left:-1px;top:2104px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:3018px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:3932px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:4846px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:5741px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:6655px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:7569px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:8464px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+  <div class="crop flip" style="left:-1px;top:9378px;width:1920px;height:914px"><img src="assets/stripes.png" alt="" style="width:100%;height:118.16%"></div>
+
+  <!-- ============ MOVING POSTER ============ -->
+  <section aria-label="Moving Poster">
+    <div class="a" style="left:345px;top:6876px;width:1230px;height:795px;background:linear-gradient(#ffe8e1,#ffb9a3 52.885%,#ffbba6)"></div>
+    <div class="a" style="left:345px;top:6877px;width:1230px;height:794px;opacity:.1;background:url(assets/circles.png) 0 0/48px 48px"></div>
+    <p class="a aoboshi nowrap" style="left:615.5px;top:7050px">Sketch</p>
+    <p class="a aoboshi nowrap" style="left:834px;top:7050px">Base</p>
+    <p class="a aoboshi nowrap" style="left:1035.5px;top:7050px">Details</p>
+    <p class="a aoboshi nowrap" style="left:1213px;top:7050px">Moving Poster</p>
+    <img class="mp-card" src="assets/mp-sketch.png" alt="Poster sketch" style="left:543px;top:7091px">
+    <img class="mp-card" src="assets/mp-base.png" alt="Poster base colours" style="left:753.5px;top:7091px">
+    <img class="mp-card" src="assets/mp-details.png" alt="Poster with details" style="left:963.5px;top:7091.31px;width:202.891px;height:360.694px">
+    <!-- moving poster slot: drop a <video> in here -->
+    <div class="mp-card" style="left:1173.97px;top:7091.06px;background:#bdbdbd"></div>
+  </section>
+
+  <!-- ============ SNIPFIT ============ -->
+  <section aria-label="SnipFit branding" class="alice">
+    <div class="a" style="left:345px;top:5583px;width:1230px;height:1293px;background:#fffae5"></div>
+    <div class="a" style="left:345px;top:6154px;width:1230px;height:165px;background:#ff885b"></div>
+    <div class="crop" style="left:850.25px;top:5678px;width:251.975px;height:99.321px"><img src="assets/snipfit.png" alt="SnipFit" style="left:-.04%;top:0;width:242.56%;height:201.17%"></div>
+    <div class="a" style="left:345px;top:5817px;width:514px;height:174px;background:#ff885b"></div>
+    <div class="a" style="left:1093px;top:5817px;width:482px;height:174px;background:#ff885b"></div>
+    <img class="a" src="assets/sf-e1.svg" alt="" style="left:775.76px;top:6006.64px;width:73.396px;height:73.396px">
+    <img class="a" src="assets/sf-e2.svg" alt="" style="left:937.89px;top:6006.64px;width:73.396px;height:73.396px">
+    <img class="a" src="assets/sf-e3.svg" alt="" style="left:1100.01px;top:6006.64px;width:73.396px;height:73.396px">
+    <p class="a nowrap" style="left:769.55px;top:6088.43px;font-size:23.37px">#FF847E</p>
+    <p class="a nowrap" style="left:930.22px;top:6088.43px;font-size:23.37px">#FFFAE5</p>
+    <p class="a nowrap" style="left:1093.81px;top:6088.43px;font-size:23.37px">#FF885B</p>
+    <p class="a nowrap" style="left:909.77px;top:6169.13px;font-size:23.37px">Typography</p>
+    <p class="a nowrap" style="left:942.27px;top:6204.18px;font-size:23.37px;color:#fffae5">ALICE</p>
+    <p class="a nowrap" style="left:711.49px;top:6230.84px;font-size:23.37px">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</p>
+    <p class="a" style="left:749.1px;top:6263.34px;font-size:23.37px;color:#fffae5;white-space:pre">a b c d e f g h i j k l m n o p q r s t u v w x  y z</p>
+    <p class="a nowrap" style="left:896.17px;top:6365px;font-size:34.249px">App Logo</p>
+    <div class="crop" style="left:687.03px;top:5833.92px;width:110.559px;height:118.763px"><img src="assets/snipfit.png" alt="" style="left:-703.11%;top:0;width:1042.4%;height:317.11%"></div>
+    <div class="crop" style="left:919.26px;top:5844.14px;width:112.691px;height:118.823px"><img src="assets/snipfit.png" alt="" style="left:-834.12%;top:-.04%;width:1042.4%;height:323.24%"></div>
+    <div class="crop" style="left:1155.15px;top:5833.92px;width:108.394px;height:118.736px"><img src="assets/snipfit.png" alt="" style="left:-954.81%;top:.13%;width:1042.4%;height:310.97%"></div>
+    <div class="crop" style="left:820.67px;top:6411.84px;width:311.109px;height:262.909px"><img src="assets/snipfit.png" alt="SnipFit app icon" style="left:-361.52%;top:0;width:857.46%;height:331.57%"></div>
+    <div class="crop" style="left:744.36px;top:6655.15px;width:263.415px;height:139.778px"><img src="assets/snipfit.png" alt="" style="left:-.07%;top:-154.05%;width:412.39%;height:254.05%"></div>
+    <div class="crop" style="left:1037.21px;top:6655.15px;width:169.796px;height:139.853px"><img src="assets/snipfit.png" alt="" style="left:-467.98%;top:0;width:865.84%;height:343.6%"></div>
+  </section>
+
+  <!-- ============ DRAWING CLOSER ============ -->
+  <section aria-label="Drawing Closer">
+    <span id="work" class="a" style="top:2140px"></span>
+    <div class="crop" style="left:345px;top:3145px;width:1230px;height:1080px"><img src="assets/paper.png" alt="" style="left:-32.36%;top:0;width:166.5%;height:100%"></div>
+    <div class="crop" style="left:345px;top:2084px;width:1230px;height:1080px"><img src="assets/paper.png" alt="" style="left:-32.36%;top:0;width:166.5%;height:100%"></div>
+    <div class="a" style="left:502.53px;top:2303.26px;width:910.106px;height:444.976px;background:#c7efff"></div>
+    <div class="crop" style="left:574.66px;top:2407.21px;width:765.846px;height:230.709px"><img src="assets/turnaround.png" alt="Character turnaround sheet" style="left:0;top:0;width:111.57%;height:100%"></div>
+    <img class="a" src="assets/alein.png" alt="Level art: alien forest" style="left:804.14px;top:2994.71px;width:307.577px;height:162.199px">
+    <img class="a" src="assets/prin.png" alt="Level art: crayon meadow" style="left:476px;top:2994.71px;width:307.577px;height:162.199px">
+    <img class="a" src="assets/prinsea1.png" alt="Level art: chalk sea" style="left:1132.24px;top:2994.73px;width:307.577px;height:162.199px">
+    <div class="crop" style="left:1311.83px;top:3068.85px;width:98.333px;height:95.122px"><img src="assets/prinsea2.png" alt="" style="left:-223.67%;top:-98.39%;width:364.08%;height:198.48%"></div>
+    <img class="a" src="assets/ket.png" alt="Character idle pose" style="left:587.92px;top:2713.76px;width:171.144px;height:204.917px">
+    <img class="a" src="assets/idle.png" alt="Character idle animation" style="left:910.38px;top:2700.5px;width:218.51px;height:218.51px">
+    <img class="a" src="assets/walk.png" alt="Character walk cycle" style="left:729.53px;top:2713.76px;width:204.721px;height:204.721px">
+    <img class="a" src="assets/running.png" alt="Character run cycle" style="left:1122.53px;top:2713.76px;width:204.721px;height:204.721px">
+    <img class="a boil-title" src="assets/dc-title.png" alt="Drawing Closer" style="left:533px;top:2166px;width:487.435px;height:274.182px">
+    <h3 class="a heading blue nowrap" style="left:1037.14px;top:2354.17px;font-size:33.943px">Character Turn Around</h3>
+    <h3 class="a heading blue nowrap" style="left:899.25px;top:2646.93px;font-size:33.943px">Assets</h3>
+    <p class="a blue" style="left:555.6px;top:3224.15px;width:765.782px;font-size:15.089px">GAME CONCEPT</p>
+    <div class="a blue" style="left:555.6px;top:3255.27px;width:805.392px;font-size:15.089px">
+      <p>"Drawing Closer" is a level-based puzzle game that explores themes of childhood nostalgia through beloved art mediums we grew up with.</p>
+      <p>&nbsp;</p>
+      <p>Each level reveals heartfelt storylines that invite you to connect with the main character's journey.</p>
+    </div>
+    <h3 class="a heading blue nowrap" style="left:912.7px;top:3392.72px;font-size:27.693px">Trailer</h3>
+    <div class="video video-crayon" style="left:614.13px;top:3459.4px;height:364px">
+      <video src="Santillan_Prin2d%20-%20Trim.mp4#t=0.5" controls preload="metadata" playsinline aria-label="Drawing Closer trailer"></video>
+    </div>
+    <div class="a frame-crayon" aria-hidden="true" style="left:598px;top:3442px;width:724px;height:399px"></div>
+    <div class="a tape" aria-hidden="true" style="left:561px;top:3447px;transform:rotate(-38deg)"></div>
+    <div class="a tape pink" aria-hidden="true" style="left:1249px;top:3447px;transform:rotate(38deg)"></div>
+    <svg class="a doodle" viewBox="0 0 40 40" aria-hidden="true" style="left:520px;top:3590px;width:54px;height:54px;--t:0s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+    <svg class="a doodle" viewBox="0 0 40 40" aria-hidden="true" style="left:1352px;top:3730px;width:66px;height:66px;--t:0s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+    <svg class="a doodle" viewBox="0 0 40 40" aria-hidden="true" style="left:546px;top:3772px;width:34px;height:34px;--t:0s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+  </section>
+
+  <!-- ============ INFO / ABOUT ============ -->
+  <section aria-label="About me">
+    <span id="about" class="a" style="top:1190px"></span>
+    <div class="crop flip" style="left:-1px;top:1079px;width:1920px;height:1025px"><img src="assets/stripes.png" alt="" style="width:100%;height:105.37%"></div>
+    <div class="a boil-portrait" style="left:790px;top:1371px;width:338.391px;height:441.454px">
+      <div class="a" style="left:0;top:0;width:338.391px;height:441.454px;background:#6f300e;border:3.848px solid #592204;border-radius:195.503px 195.503px 19.848px 19.848px;box-shadow:-6.616px 6.616px 2.646px rgba(63,10,10,.42)"></div>
+      <div class="crop arch" style="left:24.05px;top:24.62px">
+        <img src="assets/arch-pattern.png" alt="" style="inset:0;width:100%;height:100%;object-fit:cover">
+        <img src="assets/portrait.png" alt="Illustrated self-portrait of Nadine" style="left:-99.06px;top:-87.6px;width:488.405px;height:488.405px">
+      </div>
+      <div class="a arch" style="left:24.05px;top:24.62px;border:3.308px solid #592204"></div>
+    </div>
+    <div class="crop boil-art" style="left:1058px;top:1221px;width:541.22px;height:305.643px"><img src="assets/bubble.png" alt="" style="left:-54.33%;top:-18.59%;width:195.72%;height:194.95%"></div>
+    <div class="crop boil-balloon" style="left:1098.6px;top:1383.24px;width:512.911px;height:883.482px;transform:rotate(-2.12deg)"><img src="assets/balloon.png" alt="Balloons: Figma, Illustrator, Photoshop, After Effects, Clip Studio" style="left:-155.34%;top:0;width:306.22%;height:100%"></div>
+    <p class="a boil-text" style="left:1114.9px;top:1261.36px;width:448.566px;font-size:23.647px;color:#073ef7">Hey there! I’m Nadine a creative and adaptable designer passionate about bringing ideas to life through illustrations, UI, graphic, and motion design. Always curious and eager to learn, explore new ideas, and turn creative challenges into something awesome!</p>
+
+    <div class="crop note" style="left:298.34px;top:1387.65px;width:526.555px;height:407.868px;transform:rotate(90.37deg);overflow:visible">
+      <div class="crop" style="inset:0"><img src="assets/note.png" alt="" style="left:-20.04%;top:-.01%;width:137.75%;height:100.03%"></div>
+    </div>
+    <div class="a boil-text edu">
+      <h2 class="heading blue">Education :</h2>
+      <p class="school heading blue">De La Salle Lipa</p>
+      <p>2023 - Present<br>Bachelor of Science in Entertainment and Multimedia Computing [BS EMC]</p>
+      <h2 class="heading blue">Skills :</h2>
+      <p>2D Illustrations<br>UI Designs<br>Graphic Designs<br>Motion Graphics</p>
+    </div>
+
+    <div id="contact" class="a boil-text contact-block">
+      <h2 class="heading blue">Contact :</h2>
+      <div class="contact-list">
+        <a class="contact-line" href="mailto:santillan.nadine07@gmail.com"><img class="ico-mail" src="assets/mail.svg" alt="">santillan.nadine07@gmail.com</a>
+        <a class="contact-line" href="tel:+639213952256"><img class="ico-phone" src="assets/phone.svg" alt="">(+63) 921 - 395 - 2256</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HAILLELUJAH ============ -->
+  <section aria-label="Haillelujah">
+    <div class="crop" style="left:345px;top:3932px;width:1230px;height:1672px"><img src="assets/navy.png" alt="" style="left:-72.26%;top:0;width:241.69%;height:100%"></div>
+    <div class="crop cloud" style="--drift:18px;--t:-1.7s;left:1412px;top:3858px;width:685px;height:367px"><img src="assets/clouds.png" alt="" style="left:-.02%;top:-115.9%;width:306.71%;height:321.89%"></div>
+    <div class="crop cloud" style="--drift:-14px;--t:-3.4s;left:1114px;top:4976px;width:478px;height:303px"><img src="assets/clouds.png" alt="" style="left:-172.61%;top:.11%;width:306.71%;height:272.04%"><img src="assets/clouds.png" alt="" style="left:-172.61%;top:.11%;width:306.71%;height:272.04%"><img src="assets/clouds.png" alt="" style="left:-172.61%;top:.11%;width:306.71%;height:272.04%"></div>
+    <div class="crop cloud" style="--drift:12px;--t:-5.1s;left:398px;top:4407px;width:334px;height:212px"><img src="assets/clouds.png" alt="" style="left:0;top:0;width:306.71%;height:272.04%"></div>
+    <div class="crop cloud" style="--drift:-18px;--t:-6.8s;left:221px;top:3957px;width:337px;height:170px"><img src="assets/clouds.png" alt="" style="left:.02%;top:-230.71%;width:306.71%;height:342.86%"></div>
+    <div class="crop cloud" style="--drift:18px;--t:-8.5s;left:253px;top:5487px;width:337px;height:191px"><img src="assets/clouds.png" alt="" style="left:.02%;top:-205.34%;width:306.71%;height:305.16%"></div>
+    <div class="crop cloud" style="--drift:-14px;--t:-10.2s;left:-178px;top:4061px;width:502.862px;height:279.368px"><img src="assets/clouds.png" alt="" style="left:-163.79%;top:-110.09%;width:292.24%;height:295.89%"></div>
+    <div class="crop cloud" style="--drift:12px;--t:-11.9s;left:156px;top:4957px;width:337px;height:170px"><img src="assets/clouds.png" alt="" style="left:.02%;top:-230.71%;width:306.71%;height:342.86%"></div>
+    <h3 class="a baloo nowrap" style="left:885px;top:4202px;font-size:28.476px">Storyboard</h3>
+    <h3 class="a baloo nowrap" style="left:848px;top:4610px;font-size:28.476px">Character Design</h3>
+    <h3 class="a baloo nowrap" style="left:853px;top:5019px;font-size:28.476px">Short Animation</h3>
+    <h2 class="a baloo nowrap" style="left:558px;top:4073px;font-size:69.418px">Haillelujah</h2>
+
+    <img class="sb" src="assets/sb-0011.png" alt="Storyboard frame 1" style="left:628.56px;top:4273.89px">
+    <img class="sb" src="assets/sb-0023.png" alt="Storyboard frame 2" style="left:761.2px;top:4273.89px">
+    <img class="sb" src="assets/sb-0034.png" alt="Storyboard frame 3" style="left:893.83px;top:4273.89px">
+    <img class="sb" src="assets/sb-0047.png" alt="Storyboard frame 4" style="left:1026.47px;top:4273.89px">
+    <img class="sb" src="assets/sb-0048.png" alt="Storyboard frame 5" style="left:1159.1px;top:4273.89px;border-bottom-right-radius:4.449px">
+    <img class="sb" src="assets/sb-0071.png" alt="Storyboard frame 6" style="left:628.56px;top:4406.53px;border-bottom-left-radius:8.899px">
+    <img class="sb" src="assets/sb-0077.png" alt="Storyboard frame 7" style="left:761.2px;top:4406.53px">
+    <img class="sb" src="assets/sb-0083.png" alt="Storyboard frame 8" style="left:893.83px;top:4406.53px">
+    <img class="sb" src="assets/sb-0089.png" alt="Storyboard frame 9" style="left:1026.47px;top:4406.53px">
+    <img class="sb" src="assets/sb-0100.png" alt="Storyboard frame 10" style="left:1159.1px;top:4406.53px;border-bottom-right-radius:4.449px">
+    <div class="a" style="left:621px;top:4269px;width:677.631px;height:275.413px;border:8.899px solid #b9e5ed;border-radius:18.687px"></div>
+
+    <div class="crop" style="left:739px;top:4675px;width:261.882px;height:284.065px"><img src="assets/vidpro.png" alt="Character design sketches" style="left:0;top:-17.14%;width:235.29%;height:117.14%"></div>
+    <div class="crop" style="left:1036.21px;top:4675px;width:144.158px;height:292.765px"><img src="assets/vidpro-char.png" alt="Final character design" style="left:0;top:-25.4%;width:100%;height:125.42%"></div>
+    <div class="video video-night" style="left:614.05px;top:5098px">
+      <video src="Santillan_Hailelluyah!_Vidpro.mp4#t=0.5" controls preload="metadata" playsinline aria-label="Haillelujah short animation"></video>
+    </div>
+    <div class="a frame-night" aria-hidden="true" style="left:600px;top:5084px;width:720px;height:417px"></div>
+    <div class="crop cloud" aria-hidden="true" style="--drift:8px;--t:-2s;left:500px;top:5040px;width:168px;height:107px"><img src="assets/clouds.png" alt="" style="left:0;top:0;width:306.71%;height:272.04%"></div>
+    <div class="crop cloud" aria-hidden="true" style="--drift:-8px;--t:-5s;left:1288px;top:5404px;width:180px;height:114px"><img src="assets/clouds.png" alt="" style="left:0;top:0;width:306.71%;height:272.04%"></div>
+    <svg class="a twinkle" viewBox="0 0 40 40" aria-hidden="true" style="left:1356px;top:5130px;width:40px;height:40px;--t:0s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+    <svg class="a twinkle" viewBox="0 0 40 40" aria-hidden="true" style="left:1404px;top:5224px;width:24px;height:24px;--t:-0.7s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+    <svg class="a twinkle" viewBox="0 0 40 40" aria-hidden="true" style="left:540px;top:5320px;width:30px;height:30px;--t:-1.4s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+    <svg class="a twinkle" viewBox="0 0 40 40" aria-hidden="true" style="left:562px;top:5462px;width:20px;height:20px;--t:-0.3s"><path d="M20 3l4.6 11 12 1-9.2 7.8 2.9 11.7L20 28.2 9.7 34.5l2.9-11.7L3.4 15l12-1z"/></svg>
+  </section>
+
+  <!-- ============ LANDING ============ -->
+  <header aria-label="Portfolio 2026">
+    <!-- line boil: noise displacement, re-seeded a few times a second.
+         Separate filters so layers wobble independently. scale = strength, data-ms = speed, baseFrequency = wiggle size -->
+    <svg width="0" height="0" class="a" aria-hidden="true">
+      <filter id="boil" data-ms="160" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="1" seed="1" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-girl" data-ms="120" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="1" seed="11" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-sign" data-ms="210" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="1" seed="23" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-chat" data-ms="170" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="1" seed="37" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-about" data-ms="170" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="1" seed="41" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-balloon" data-ms="200" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="1" seed="53" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-text" data-ms="180" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="1" seed="67" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-portrait" data-ms="180" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="1" seed="79" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-title" data-ms="150" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="1" seed="89" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-cloud" data-ms="260" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="1" seed="97" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="boil-nav" data-ms="170" x="-5%" y="-20%" width="110%" height="140%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="1" seed="103" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+      <filter id="crayon" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.45" numOctaves="2" seed="5" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </svg>
+    <div class="boil">
+      <div class="art">
+          <img class="a" src="assets/bga1.png" alt="" style="left:.51px;top:0;width:1918.146px;height:1078.957px">
+      </div>
+      <!-- girl: ducks behind the right curtain and peeks back in -->
+      <div class="peek">
+        <div class="art girl">
+          <img class="a" src="assets/me.png" alt="Nadine peeking through the curtain" style="left:.51px;top:4.05px;width:1918.146px;height:1078.957px">
+        </div>
+      </div>
+      <div class="art">
+          <img class="a" src="assets/curtain.png" alt="" style="left:1.56px;top:0;width:1917.619px;height:1078.661px">
+      </div>
+      <!-- hanging sign: swings below the point where the strings leave the top curtain -->
+      <div class="drop">
+      <div class="sway">
+        <div class="art sign">
+          <img class="a" src="assets/port1.png" alt="Portfolio" style="left:-1px;top:-3px;width:1923.589px;height:1082.019px">
+          <h1 class="a body-font" style="left:1200px;top:249px;width:447.741px;font-size:33.712px;font-weight:400;color:#1f0000;text-align:center">By : Nadine R. Santillan</h1>
+          <p class="a" style="left:1580.63px;top:682.62px;width:153.071px;font-size:54.563px;transform:rotate(-13.78deg)">2026</p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ EYECON ============ -->
+  <section aria-label="EyeCon">
+    <div class="a" style="left:345px;top:7671px;width:1230px;height:2392px;background:#d7f3f1;border-radius:0 0 30px 30px"></div>
+    <img class="a" src="assets/ec-e18.svg" alt="" style="left:252px;top:8397px;width:658px;height:658px">
+    <div class="a" style="left:632px;top:8895px;width:654px;height:920px;background:#f8c5c5;border-radius:200px 200px 30px 30px;box-shadow:-10px 5px 2px rgba(97,8,8,.25)"></div>
+    <img class="a" src="assets/ec-e28.svg" alt="" style="left:1129px;top:9008px;width:83px;height:83px">
+    <div class="a" style="left:1504.59px;top:7622px;width:233.408px;height:233.408px"><span class="ins" style="inset:0 -1.71% -3.43% -1.71%"><img src="assets/ec-e20.svg" alt=""></span></div>
+    <div class="a" style="left:1401px;top:7633.43px;width:160.762px;height:160.762px"><span class="ins" style="inset:0 -2.49% -4.98% -2.49%"><img src="assets/ec-e21.svg" alt=""></span></div>
+    <div class="a" style="left:1621.63px;top:7875.59px;width:46.413px;height:46.413px"><span class="ins" style="inset:0 -8.62% -17.24% -8.62%"><img src="assets/ec-e23.svg" alt=""></span></div>
+    <img class="a" src="assets/ec-e22.svg" alt="" style="left:1908px;top:7849px;width:145px;height:145px">
+    <div class="crop" style="left:752.83px;top:7791px;width:453.951px;height:142.91px"><img src="assets/eyecon-logo.png" alt="EyeCon" style="left:0;top:-120.29%;width:100%;height:317.65%"></div>
+    <img class="a" src="assets/ec-e16.svg" alt="" style="left:134.29px;top:7519.93px;width:640.621px;height:640.621px;transform:rotate(-.21deg)">
+    <div class="a" style="left:348.23px;top:7644.93px;width:169.942px;height:169.942px"><span class="ins" style="inset:0 -2.35% -4.71% -2.35%"><img src="assets/ec-e24.svg" alt=""></span></div>
+    <div class="a" style="left:147px;top:7566px;width:274.467px;height:274.467px"><span class="ins" style="inset:0 -1.46% -2.91% -1.46%"><img src="assets/ec-e27.svg" alt=""></span></div>
+    <div class="a" style="left:459.86px;top:7703.23px;width:123.724px;height:123.724px"><span class="ins" style="inset:0 -3.23% -6.47% -3.23%"><img src="assets/ec-e25.svg" alt=""></span></div>
+    <div class="a" style="left:345px;top:7815px;width:80.349px;height:80.349px"><span class="ins" style="inset:0 -4.98% -9.96% -4.98%"><img src="assets/ec-e26.svg" alt=""></span></div>
+
+    <p class="a nunito ctr" style="left:979.48px;top:7963.42px;width:686.392px;line-height:27.668px"><span style="font-size:29.513px"> EyeCon</span><span style="font-size:18.445px"> is an interactive 2D web-based simulation game for enhancing visual interface standards and accessibility literacy. </span></p>
+    <h3 class="a nunito ctr" style="left:960.2px;top:8040px;width:686.392px;font-size:29.513px;line-height:27.668px">Game Ui</h3>
+    <h3 class="a nunito ctr" style="left:960.2px;top:8935px;width:686.392px;font-size:29.513px;line-height:27.668px">Sample Levels</h3>
+    <h3 class="a nunito ctr" style="left:960.2px;top:9849px;width:686.392px;font-size:29.513px;line-height:27.668px">Thesis Proponents :</h3>
+
+    <img class="a" src="assets/client5.png" alt="Sample level: Cones colour-vision landing page" style="left:700px;top:9005px;width:413.487px;height:232.587px">
+    <img class="a" src="assets/ec-e6.svg" alt="" style="left:1129.64px;top:9261.71px;width:82.482px;height:82.482px">
+    <img class="a" src="assets/shield.png" alt="" style="border-radius:50%;left:1129.64px;top:9261.71px;width:82.482px;height:82.482px">
+    <img class="a" src="assets/client6.png" alt="Sample level: academic dashboard" style="left:700px;top:9261.71px;width:413.487px;height:232.587px">
+    <img class="a" src="assets/client2.png" alt="Sample level: login screen" style="left:700px;top:9518.41px;width:413.487px;height:232.587px">
+    <img class="a" src="assets/ec-e5.svg" alt="" style="left:1137.82px;top:9518.41px;width:82.482px;height:82.482px">
+    <img class="a" src="assets/ec-e4.png" alt="" style="left:1137.82px;top:9518.41px;width:82.482px;height:82.482px">
+    <img class="a" src="assets/eye.png" alt="" style="left:1136.84px;top:9016.76px;width:67.118px;height:67.118px">
+    <img class="a" src="assets/ec-e15.svg" alt="" style="left:1219px;top:8186px;width:595px;height:595px">
+
+    <img class="ec-shot" src="assets/ec-21.png" alt="EyeCon game UI screenshot 5" style="left:749px;top:8626px">
+    <img class="ec-shot" src="assets/ec-19.png" alt="EyeCon game UI screenshot 1" style="left:516px;top:8084px">
+    <img class="ec-shot" src="assets/ec-20.png" alt="EyeCon game UI screenshot 3" style="left:516px;top:8358.97px">
+    <img class="ec-shot" src="assets/ec-22.png" alt="EyeCon game UI screenshot 2" style="left:984.19px;top:8084px">
+    <img class="ec-shot" src="assets/ec-23.png" alt="EyeCon game UI screenshot 4" style="left:984.19px;top:8358.97px">
+
+    <img class="proponent" src="assets/awi.png" alt="Awi" style="left:625px">
+    <img class="proponent" src="assets/kryu.png" alt="Kryu" style="left:791.52px">
+    <img class="proponent" src="assets/nadine.png" alt="Nadine" style="left:973.24px">
+    <img class="proponent" src="assets/nica.png" alt="Nica" style="left:1139.39px">
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="crop" style="left:0;top:10122px;width:1920px;height:190px"><img src="assets/stripes.png" alt="" style="left:0;top:-468.42%;width:100%;height:568.42%"></div>
+    <p class="a blue" style="left:0;width:1920px;text-align:center;top:10232px;font-size:28.057px">© 2026 All rights are reserved.</p>
+  </footer>
+
+</main>
+<script>
+  // ponytail: SVG filter on a full-width layer is CPU-heavy; swap for 3 pre-rendered frames if it stutters
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('filter[data-ms]').forEach(filter => {
+    const noise = filter.querySelector('feTurbulence'), base = +noise.getAttribute('seed');
+    let frame = 0;
+    setInterval(() => {
+      if (!still.matches) noise.setAttribute('seed', base + (++frame % 3));
+    }, +filter.dataset.ms);
+  });
+
+  // scroll reveal: content below the header rises in once; section backgrounds (1200px+ wide) stay put
+  if (!still.matches) {
+    const seen = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); seen.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.stage section > :not(span)').forEach(el => {
+      const css = getComputedStyle(el);
+      if (parseFloat(css.width) >= 1200) return;
+      el.style.setProperty('--delay', Math.max(0, parseFloat(css.left)) / 1920 * .35 + 's'); // left to right
+      el.classList.add('reveal');
+      seen.observe(el);
+    });
+  }
+
+  // sign drop: falls in on load, and again each time you return to the top
+  if (!still.matches) {
+    const drop = document.querySelector('.drop');
+    drop.classList.add('up');
+    const check = () => {
+      const z = document.documentElement.clientWidth / 1920;
+      if (scrollY > 800 * z) { drop.classList.remove('fall'); drop.classList.add('up'); }  // off screen: reset
+      else if (scrollY < 80 * z && drop.classList.contains('up')) drop.classList.replace('up', 'fall');
+    };
+    // wait for the artwork so the fall isn't played before it has loaded
+    drop.querySelector('img').decode().catch(() => {}).then(() => { check(); addEventListener('scroll', check, { passive: true }); });
+  }
+
+  // contact card: visible only after the header has scrolled away
+  const chat = document.querySelector('.chat');
+  const showChat = () => chat.classList.toggle('show', scrollY > 800 * document.documentElement.clientWidth / 1920);
+  showChat(); addEventListener('scroll', showChat, { passive: true });
+</script>
+</body>
+</html>

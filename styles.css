@@ -1,0 +1,198 @@
+/* ponytail: fixed 1920px artboard scaled to viewport width (matches Figma 1:1).
+   Phones get a scaled-down page; add a reflowed mobile layout if that matters. */
+:root {
+  --blue: #002be5;
+  --navy-text: #0010a2;
+  --ink: #123b54;
+  /* portfolio fonts. Project sections keep their own brand fonts (Baloo, Alice, Aoboshi, Nunito). */
+  --font-head: "Chewy", cursive;
+  --font-body: "Itim", cursive;
+}
+* { margin: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(189px * var(--z, 1)); }
+body { background: #fff; overflow-x: hidden; }
+
+.stage {
+  position: relative;
+  width: 1920px;
+  height: 10312px;
+  overflow: hidden;
+  zoom: var(--z, 1);
+  font-family: var(--font-body);
+}
+
+/* every layer is absolutely placed with Figma coordinates */
+.a { position: absolute; }
+img.a { max-width: none; object-fit: cover; }
+.crop { position: absolute; overflow: hidden; }
+.crop img { position: absolute; max-width: none; }
+.flip { transform: scaleY(-1); }
+.ins { position: absolute; }
+.arch { width: 290.867px; height: 400.801px; border-radius: 168.047px 168.047px 19.848px 19.848px; }
+.ins img { display: block; width: 100%; height: 100%; }
+.ctr { transform: translate(-50%, -50%); text-align: center; }
+.nowrap { white-space: nowrap; }
+
+/* fonts */
+.body-font { font-family: var(--font-body); }
+.heading { font-family: var(--font-head); font-weight: 400; }
+.baloo { font-family: "Baloo 2", sans-serif; color: #fff; font-weight: 700; }
+.alice { font-family: "Alice", serif; }
+.aoboshi { font-family: "Aoboshi One", serif; color: #461a01; font-size: 18px; }
+.nunito { font-family: "Nunito", sans-serif; font-weight: 700; color: var(--ink); }
+
+/* line boil (header art only, nav stays still). Slight upscale hides displaced edges. */
+.boil { position: absolute; left: 0; top: 0; width: 1920px; height: 1079px; overflow: hidden; }
+.art { position: absolute; inset: 0; filter: url(#boil); transform: scale(1.008); }
+
+.art.girl { filter: url(#boil-girl); }
+.art.sign { filter: url(#boil-sign); }
+
+/* About section boil */
+.boil-art { filter: url(#boil-about); }
+.boil-portrait { filter: url(#boil-portrait); }
+.boil-balloon { filter: url(#boil-balloon); }
+.boil-text { filter: url(#boil-text); }
+.note { filter: url(#boil-about) drop-shadow(19.848px 6.616px 2.646px rgba(53, 5, 5, .51)); }
+@media (prefers-reduced-motion: reduce) {
+  .boil-art, .boil-portrait, .boil-balloon, .boil-text { filter: none; }
+  .note { filter: drop-shadow(19.848px 6.616px 2.646px rgba(53, 5, 5, .51)); }
+}
+
+.boil-title { filter: url(#boil-title); }
+/* clouds: gentle boil + slow float. --drift (per cloud, in index.html) = sideways distance, 7s = speed (higher is slower) */
+.cloud { filter: url(#boil-cloud); animation: float 7s ease-in-out var(--t) infinite alternate; }
+@keyframes float { from { transform: translate(0, 0); } to { transform: translate(var(--drift), -10px); } }
+@media (prefers-reduced-motion: reduce) { .boil-title, .cloud { filter: none; animation: none; } }
+
+/* video frames: decoration only, so clicks go through to the player */
+.frame-crayon, .frame-night, .tape, .doodle, .twinkle, .video ~ .cloud { pointer-events: none; }
+.video.video-crayon { border: 0; border-radius: 10px; background: #fff4e1; }
+.frame-crayon { border: 15px solid var(--blue); border-radius: 34px 16px 40px 14px / 16px 36px 14px 38px; box-shadow: 0 0 0 7px #9fdcc4, inset 0 0 0 3px #ffc544; filter: url(#crayon) url(#boil-title); }
+.tape { width: 130px; height: 36px; background: rgba(255, 197, 68, .85); filter: url(#crayon); }
+.tape.pink { background: rgba(255, 138, 128, .85); }
+.doodle { fill: #ffc544; stroke: var(--blue); stroke-width: 3; stroke-linejoin: round; overflow: visible; filter: url(#boil-title); }
+.video.video-night { border: 0; border-radius: 20px; background: linear-gradient(#171a3d, #343a6e); }
+.video.video-night video { object-fit: contain; }  /* square film in a wide player: show it whole, night sky at the sides instead of black */
+.frame-night { border: 14px solid #b9e5ed; border-radius: 30px; box-shadow: 0 0 0 5px #fff, 0 0 38px 8px rgba(185, 229, 237, .55); filter: url(#boil-portrait); }
+.twinkle { fill: #ffe9a3; overflow: visible; animation: twinkle 2s ease-in-out var(--t) infinite alternate; }
+@keyframes twinkle { from { opacity: .35; scale: .75; } to { opacity: 1; scale: 1.1; } }
+@media (prefers-reduced-motion: reduce) { .frame-crayon { filter: url(#crayon); } .frame-night, .doodle { filter: none; } .twinkle { animation: none; } }
+
+/* sway: skew leaves everything at y=150 fixed, so string tops stay put. deg = swing size */
+.sway { position: absolute; inset: 0; transform-origin: 0 150px; animation: sway 3s ease-in-out infinite alternate; will-change: transform; }
+@keyframes sway { from { transform: skewX(-1.2deg); } to { transform: skewX(1.2deg); } }
+
+/* sign drop. Keep the overshoot (18px) small or the string tops slip out from under the curtain */
+.drop { position: absolute; inset: 0; }
+.drop.up { transform: translateY(-820px); }
+.drop.fall { animation: fall .9s both; }
+@keyframes fall {
+  0%   { transform: translateY(-820px); animation-timing-function: cubic-bezier(.45, 0, .85, .6); }
+  62%  { transform: translateY(18px);  animation-timing-function: ease-in-out; }
+  78%  { transform: translateY(-14px); animation-timing-function: ease-in-out; }
+  90%  { transform: translateY(6px);   animation-timing-function: ease-in-out; }
+  100% { transform: none; }
+}
+
+/* peek: 0px = design pose; only move right (the art is cut off behind the curtain). 7s = loop length */
+.peek { position: absolute; inset: 0; transform-origin: 560px 930px; animation: peek 7s ease-in-out infinite; will-change: transform; }
+@keyframes peek {
+  0%, 35%   { transform: none; }                                 /* looking out */
+  44%, 62%  { transform: translateX(210px) rotate(6deg); }       /* hidden */
+  70%, 80%  { transform: translateX(50px) rotate(2deg); }        /* shy half peek */
+  90%, 100% { transform: none; }                                 /* all the way in */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art, .art.girl, .art.sign { filter: none; transform: none; }
+  .sway, .peek { animation: none; }
+}
+
+/* fixed top curtain + nav */
+.topbar { position: fixed; z-index: 10; left: 0; top: 0; width: 1920px; height: 189px; zoom: var(--z, 1); }
+.topbar .art { inset: -6px -8px auto; height: 249px; transform: none; pointer-events: none; }
+/* top-right, equal gap between words. right = distance from the edge, gap = space between words, top = height */
+.nav { position: absolute; top: 28px; right: 72px; display: flex; gap: 64px; filter: url(#boil-nav); }
+@media (prefers-reduced-motion: reduce) { .nav { filter: none; } }
+.nav a { font-size: 32px; line-height: 44px; color: #fff; text-decoration: none; white-space: nowrap; }
+.nav a:hover, .nav a:focus-visible { text-decoration: underline; }
+
+/* floating contact card, drawn at Figma size (1677x551). Card size = .52 x page scale, never below .2 (about 335px) */
+.chat {
+  position: fixed; z-index: 9; right: 8px; bottom: calc(24px * var(--z, 1));
+  font-family: var(--font-body); pointer-events: none;
+  opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s;
+}
+.chat-in { position: relative; width: 1677px; height: 551px; zoom: max(.2, var(--z, 1) * .52); }
+.chat.show { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+/* girl pops up first, then the chat box grows out of its tail. .5s = gap between them */
+.chat.show .chat-mascot { animation: pop-girl .65s both; }
+.chat.show .chat-art { animation: pop-bubble .45s .5s both; }
+@keyframes pop-girl {
+  0%   { transform: translateY(380px) scale(.4); }
+  55%  { transform: translateY(-45px) scale(.95, 1.14); }
+  75%  { transform: translateY(8px) scale(1.08, .92); }
+  100% { transform: none; }
+}
+@keyframes pop-bubble {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.07); opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+.chat-art, .chat-mascot { position: absolute; }
+.chat-art { left: 0; top: 0; width: 1473px; height: 426px; transform-origin: 1335px 364px; }
+.chat-art > .crop { filter: url(#boil-chat); }
+.chat-art a { pointer-events: auto; }
+.chat-mascot { left: 1321px; top: 195px; width: 356px; height: 356px; transform-origin: 50% 100%; filter: url(#boil-chat); }
+.chat-mascot img { width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) { .chat { transition: none; } .chat.show .chat-art, .chat.show .chat-mascot { animation: none; } .chat-art > .crop, .chat-mascot { filter: none; } }
+@media print { .chat { display: none; } }
+
+/* scroll reveal: translate (not transform) so rotated/flipped pieces keep their pose. 60px = rise, .8s = speed */
+.reveal { opacity: 0; translate: 0 60px; transition: opacity .8s ease var(--delay), translate .8s cubic-bezier(.2, .8, .3, 1.2) var(--delay); }
+.reveal.in { opacity: 1; translate: none; }
+.twinkle.reveal:not(.in) { animation: none; }
+@media print { .reveal { opacity: 1; translate: none; } }
+
+.blue { color: var(--blue); }
+
+/* contact lines: same size, icon slot and spacing everywhere */
+.contact-line { display: flex; align-items: center; gap: .5em; line-height: 1.5; color: var(--blue); text-decoration: none; white-space: nowrap; }
+.contact-line:hover, .contact-line:focus-visible { text-decoration: underline; }
+.contact-line img { flex: none; }
+.ico-mail { width: 1.25em; height: 1.02em; }
+.ico-phone { width: 1em; height: 1em; margin: 0 .125em; }
+
+/* education + skills, centred on the paper note */
+.edu { left: 374px; top: 1343px; width: 380px; height: 486px; padding: 0 24px; display: flex; flex-direction: column; justify-content: center; }
+.edu h2 { font-size: 40px; line-height: 1.25; }
+.edu h2 ~ h2 { margin-top: 32px; }
+.edu .school { font-size: 30px; line-height: 1.3; color: var(--blue); margin-bottom: 4px; }
+.edu p { font-size: 20px; line-height: 1.4; color: var(--navy-text); }
+
+/* about contact: centred on the portrait (x = 959) */
+.contact-block { left: 759px; top: 1852px; width: 400px; display: flex; flex-direction: column; align-items: center; gap: 8px; font-size: 23px; }
+.contact-block h2 { font-size: 52px; line-height: 1.25; }
+.contact-list { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+
+/* floating card: centred in the bubble body */
+.contact-card { left: 23px; top: 33px; width: 1395px; height: 232px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; font-size: 38px; }
+.contact-card > p { font-size: 76px; line-height: 1.2; }
+.contact-row { display: flex; gap: 72px; }
+a.blue:hover { color: #0010a2; }
+
+/* video slots (empty in the design) */
+.video {
+  position: absolute; background: #d9d9d9;
+  border: 2.164px solid var(--blue); border-radius: 21.635px;
+  width: 691.893px; height: 389.19px; overflow: hidden;
+}
+.video video { display: block; width: 100%; height: 100%; object-fit: cover; }  /* frame shapes in index.html match each film, so no bars */
+.video video:fullscreen { object-fit: contain; }
+
+.mp-card { position: absolute; width: 203.031px; height: 360.944px; box-shadow: -10px 5px 2px rgba(103, 7, 7, .25); object-fit: cover; }
+.ec-shot { position: absolute; width: 419.008px; height: 235.624px; box-shadow: -10px 5px 4px rgba(67, 4, 4, .25); object-fit: cover; }
+.sb { position: absolute; width: 132.634px; height: 132.634px; object-fit: cover; }
+.proponent { position: absolute; top: 9879px; width: 134.611px; height: 134.611px; object-fit: cover; }
