@@ -29,7 +29,7 @@
   </div>
   <nav class="nav heading">
     <a href="#about">About me</a>
-    <a href="#work">Resume</a>
+    <a href="Santillan%20_%20Resume%202026.pdf" target="_blank" rel="noopener">Resume</a>
     <a href="#contact">Contact</a>
   </nav>
 </div>
@@ -98,15 +98,13 @@
 
   <!-- ============ DRAWING CLOSER ============ -->
   <section aria-label="Drawing Closer">
-    <span id="work" class="a" style="top:2140px"></span>
     <div class="crop" style="left:345px;top:3145px;width:1230px;height:1080px"><img src="assets/paper.png" alt="" style="left:-32.36%;top:0;width:166.5%;height:100%"></div>
     <div class="crop" style="left:345px;top:2084px;width:1230px;height:1080px"><img src="assets/paper.png" alt="" style="left:-32.36%;top:0;width:166.5%;height:100%"></div>
     <div class="a" style="left:502.53px;top:2303.26px;width:910.106px;height:444.976px;background:#c7efff"></div>
     <div class="crop" style="left:574.66px;top:2407.21px;width:765.846px;height:230.709px"><img src="assets/turnaround.png" alt="Character turnaround sheet" style="left:0;top:0;width:111.57%;height:100%"></div>
     <img class="a" src="assets/alein.png" alt="Level art: alien forest" style="left:804.14px;top:2994.71px;width:307.577px;height:162.199px">
     <img class="a" src="assets/prin.png" alt="Level art: crayon meadow" style="left:476px;top:2994.71px;width:307.577px;height:162.199px">
-    <img class="a" src="assets/prinsea1.png" alt="Level art: chalk sea" style="left:1132.24px;top:2994.73px;width:307.577px;height:162.199px">
-    <div class="crop" style="left:1311.83px;top:3068.85px;width:98.333px;height:95.122px"><img src="assets/prinsea2.png" alt="" style="left:-223.67%;top:-98.39%;width:364.08%;height:198.48%"></div>
+    <img class="a" src="assets/prinsea.webp" alt="Level art: chalk sea" style="left:1132.24px;top:2994.73px;width:307.577px;height:162.199px">
     <img class="a" src="assets/ket.png" alt="Character idle pose" style="left:587.92px;top:2713.76px;width:171.144px;height:204.917px">
     <img class="a" src="assets/idle.png" alt="Character idle animation" style="left:910.38px;top:2700.5px;width:218.51px;height:218.51px">
     <img class="a" src="assets/walk.png" alt="Character walk cycle" style="left:729.53px;top:2713.76px;width:204.721px;height:204.721px">
@@ -399,7 +397,7 @@
   if (still.matches) document.querySelectorAll('video[autoplay]').forEach(v => { v.autoplay = false; v.pause(); v.controls = true; });
 
   // click artwork to enlarge it. decor = files that are backgrounds or ornaments, so they stay unclickable
-  const decor = /(stripes|paper\.|navy|clouds|ec-e\d|sf-e|shield|eye\.png|mail|phone|arch-pattern|note|bubble)/;
+  const decor = /(stripes|paper\.|navy|clouds|ec-e\d|sf-e|shield|eye\.png|mail|phone|arch-pattern|note|bubble|balloon)/;
   const art = new Set([...document.querySelectorAll('.stage section img')]
     .filter(img => !decor.test(img.getAttribute('src')))
     .map(img => img.closest('.crop') || img));  // cropped sprites enlarge as the visible crop, not the whole file
