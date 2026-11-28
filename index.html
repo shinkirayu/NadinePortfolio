@@ -397,7 +397,7 @@
   if (still.matches) document.querySelectorAll('video[autoplay]').forEach(v => { v.autoplay = false; v.pause(); v.controls = true; });
 
   // click artwork to enlarge it. decor = files that are backgrounds or ornaments, so they stay unclickable
-  const decor = /(stripes|paper\.|navy|clouds|ec-e\d|sf-e|shield|eye\.png|mail|phone|arch-pattern|note|bubble|balloon)/;
+  const decor = /(stripes|paper\.|navy|clouds|ec-e\d|sf-e|shield|eye\.png|mail|phone|arch-pattern|note|bubble|balloon|dc-title|eyecon-logo)/;
   const art = new Set([...document.querySelectorAll('.stage section img')]
     .filter(img => !decor.test(img.getAttribute('src')))
     .map(img => img.closest('.crop') || img));  // cropped sprites enlarge as the visible crop, not the whole file
